@@ -9,13 +9,9 @@
     <script src="jquery.transform2d.js"></script>
     <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   </head>
   <body>
-    <script>
-      function shit() {
-        $("#cont1").css({color: "blue"});
-      }
-    </script>
     <div id="loader-wrapper">
       <h1 id="loadingText">Loading</h1>
       <div id="loader"></div>
@@ -31,11 +27,25 @@
         <li><a class="navlink" href="#Lesson1">Lesson 1</a></li>
         <li><a class="navlink" href="#Lesson2">Lesson 2</a></li>
         <li><a class="navlink" href="#Lesson3">Lesson 3</a></li>
-        <li><a class="navlink" id="login" href="#Login">Login</a></li>
+        <li><a class="navlink" id="login" href="#">Account</a></li>
       </ul>
     </div>
     <center><img id="arrow" class="arrow" src="arrow.png"></center>
-    <div id="cont1" class="cont" onclick="shit()">
+    <div id="loginPop">
+      <div id="loginBox">
+        <input type="email" class="credentials" id="username" name="email" placeholder="Username">
+        <input type="password" class="credentials" id="password" name="password" placeholder="Password">
+        <button id="loginButton">Login</button>
+      </div>
+        <div id="createBox">
+          <input type="email" id="userLogin" class="credentials" name="username" placeholder="Username">
+          <input type="password" id="passLogin" class="credentials" name="password" placeholder="Password">
+          <button id="createButton">Create</button>
+        </div>
+        <button id="createUser">Create account</button>
+        <button id="loginUser">Login screen</button>
+      </div>
+    <div id="cont1" class="cont">
       some content here
     </div>
   </body>
