@@ -1,37 +1,43 @@
-$(function() {
-  $(document).on("scroll", onScroll);
+$(document).ready(function(){
+timeout();
+  $("#arrow").css({transform: "rotate(180deg)"});
+  $("#arrow").toggle(function() {
+      $("#arrow").animate({
+        top: "0",
+        opacity: "0.6",
+        transform: "rotate(360deg)"
+      }, 600, 'easeInOutBack');
+      $(".navbar").animate({
+        top: '-42px',
+        opacity: '0.6'
+      }, 600, 'easeInOutBack');
 
-  //smoothscroll
-  $('a[href^="#"]').on('click', function(e) {
-    e.preventDefault();
-    $(document).off("scroll");
+    }, function() {
+        $("#arrow").animate({
+          top: "42px",
+          opacity: "1",
+          transform: "rotate(180deg)"
+        }, 600, 'easeInOutBack');
+        $(".navbar").animate({
+          top: '0',
+          opacity: '1'
+        }, 600, 'easeInOutBack');
+      });
+      setTimeout(function() {
+        $('body').addClass('loaded');
+        $('h1').css('color','#222222');
+    }, 1000);
 
-    $('a').each(function() {
-      $(this).removeClass('active');
-    })
-    $(this).addClass('active');
-
-    var target = this.hash,
-      menu = target;
-    $target = $(target);
-    $('html, body').stop().animate({
-      'scrollTop': $target.offset().top + 2
-    }, 500, 'swing', function() {
-      window.location.hash = target;
-      $(document).on("scroll", onScroll);
-    });
-  });
-});
-function onScroll(event) {
-  var scrollPos = $(document).scrollTop();
-  $('.topnavLink').each(function() {
-    var currLink = $(this);
-    var refElement = $(currLink.attr("href"));
-    if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-      $('.topnavLink').removeClass("active");
-      currLink.addClass("active");
-    } else {
-      currLink.removeClass("active");
-    }
-  });
+    function timeout() {
+    setTimeout(function () {
+      setTimeout(function() {
+        var text = $("h1");
+          $("h1").text("Loading.  ");
+      }, 500);
+      setTimeout(function() {
+        $("h1").text("Loading . ");
+      }, 1000);
+        timeout();
+    }, 1000);
 }
+    });
